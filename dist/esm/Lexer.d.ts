@@ -1,4 +1,4 @@
-import Token from './Token.js';
+import Token from './Token';
 export type TokenGenerator = Generator<Token, null, never>;
 /**
  * A generator function that produces a stream of lexemes for a given input

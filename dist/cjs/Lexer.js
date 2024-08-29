@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = tokenize;
-const Token_js_1 = __importStar(require("./Token.js"));
+const Token_1 = __importStar(require("./Token"));
 const STRING_REGEX = /^"[^"\\]*(?:\\.[^"\\]*)*"/;
 const BOOL_REGEX = /^(?:AND|OR|&&|\|\|)/;
 const IDENTIFIER_REGEX = /^[_a-zA-Z][_a-zA-Z0-9]*/;
@@ -46,35 +46,35 @@ function* tokenize(input) {
         }
         if ((matches = STRING_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.STRING, stripcslashes(matches[0].substring(1, matches[0].length - 1)));
+            yield new Token_1.default(Token_1.STRING, stripcslashes(matches[0].substring(1, matches[0].length - 1)));
         }
         else if ((matches = BOOL_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.BOOLEAN_OPERATOR, matches[0]);
+            yield new Token_1.default(Token_1.BOOLEAN_OPERATOR, matches[0]);
         }
         else if ((matches = IDENTIFIER_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.IDENTIFIER, matches[0]);
+            yield new Token_1.default(Token_1.IDENTIFIER, matches[0]);
         }
         else if ((matches = NUMBER_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.NUMBER, matches[0]);
+            yield new Token_1.default(Token_1.NUMBER, matches[0]);
         }
         else if ((matches = MATH_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.MATH_OPERATOR, matches[0]);
+            yield new Token_1.default(Token_1.MATH_OPERATOR, matches[0]);
         }
         else if ((matches = COMPARISON_REGEX.exec(input.substring(offset))) && matches.length > 0) {
             offset += matches[0].length;
-            yield new Token_js_1.default(Token_js_1.COMPARISON_OPERATOR, matches[0]);
+            yield new Token_1.default(Token_1.COMPARISON_OPERATOR, matches[0]);
         }
         else if (input[offset] === '(') {
             ++offset;
-            yield new Token_js_1.default(Token_js_1.OPEN_PAREN);
+            yield new Token_1.default(Token_1.OPEN_PAREN);
         }
         else if (input[offset] === ')') {
             ++offset;
-            yield new Token_js_1.default(Token_js_1.CLOSE_PAREN);
+            yield new Token_1.default(Token_1.CLOSE_PAREN);
         }
         else {
             throw new Error('Unexpected "' + input.substring(offset) + '" at position: ' + offset);
