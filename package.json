@@ -1,0 +1,35 @@
+{
+    "name": "interprete",
+    "version": "0.0.1",
+    "description": "",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/esm/index.d.ts",
+    "scripts": {
+        "build": "npm run build:esm && npm run build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jonnsl/interprete.git"
+    },
+    "keywords": [],
+    "files": [
+        "/dist"
+    ],
+    "author": "Jonnathan Soares Lima",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/jonnsl/interprete/issues"
+    },
+    "homepage": "https://github.com/jonnsl/interprete#readme",
+    "devDependencies": {
+        "@types/jest": "^29.5.12",
+        "esbuild": "^0.23.1",
+        "esbuild-jest": "^0.5.0",
+        "jest": "^29.7.0",
+        "typescript": "^5.5.4"
+    }
+}
