@@ -6,6 +6,12 @@ Simple expression evaluator in typescript
 * Boolean operators (or || and &&)
 * Comparisons (= != < > <= >=)
 
+## Installation
+
+```bash
+npm install --save @jonnsl/interprete
+```
+
 ## Examples
 
 ```javascript
@@ -13,12 +19,6 @@ import evaluate from '@jonnsl/interprete';
 
 const expression = 'year < 2004';
 const result = evaluate(input, { year: '10' }); // result === true
-```
-
-## Installation
-
-```bash
-npm install --save interprete
 ```
 
 ## License
